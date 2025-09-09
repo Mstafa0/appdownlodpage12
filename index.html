@@ -3,301 +3,68 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Anesthesia Dose App</title>
+  <title>صفحة التطبيق</title>
   <style>
-    * {margin: 0; padding: 0; box-sizing: border-box;}
-body {
-  margin: 0;
-  padding: 0;
-  font-family: Arial, sans-serif;
-  background: linear-gradient(rgba(0, 0, 0, 0.9), rgba(20, 20, 20, 0.9)), 
-              url("images2/background.jpg") no-repeat center center fixed;
-  background-size: cover;
-  color: white;
-}
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      /* خلفية مظلمة شفافة */
+      background: linear-gradient(rgba(0, 0, 0, 0.95), rgba(30, 30, 30, 0.95));
+      color: white;
+    }
+
     .container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 100vh;
-  text-align: center;
-}
-    .card {
-  background: rgba(255, 255, 255, 0.05); /* شفاف */
-  padding: 20px 30px;
-  border-radius: 15px;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.6);
-  backdrop-filter: blur(10px);
-}
-    button {
-  padding: 12px 24px;
-  margin-top: 20px;
-  border: none;
-  border-radius: 25px;
-  background: linear-gradient(90deg, #00c6ff, #0072ff);
-  color: white;
-  font-size: 16px;
-  cursor: pointer;
-  transition: 0.3s;
-}
-
-    button:hover {
-  transform: scale(1.05);
-  background: linear-gradient(90deg, #0072ff, #00c6ff);
-}
-
-    header {
-      background: rgba(0, 0, 0, 0.5);
-      padding: 15px 25px;
-      text-align: center;
-      font-size: 1.8em;
-      font-weight: bold;
-      letter-spacing: 1px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-    }
-
-    .lang-btns {
-      margin: 15px 0;
-      text-align: center;
-    }
-    .lang-btn {
-      margin: 0 8px;
-      padding: 8px 20px;
-      border-radius: 25px;
-      border: none;
-      cursor: pointer;
-      background: rgba(255, 255, 255, 0.15);
-      color: #fff;
-      font-size: 0.95em;
-      transition: all 0.3s ease;
-    }
-    .lang-btn:hover {
-      background: rgba(255, 255, 255, 0.35);
-      transform: scale(1.05);
-    }
-
-    main {
-      flex: 1;
       display: flex;
       flex-direction: column;
       align-items: center;
-      padding: 20px;
+      justify-content: center;
+      height: 100vh;
       text-align: center;
     }
 
-    .logo {
-      width: 130px;
-      height: 130px;
-      margin-bottom: 20px;
-    }
-    .logo img {
-      width: 100%; height: 100%;
-      object-fit: contain;
-      border-radius: 20px;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+    .card {
+      background: rgba(255, 255, 255, 0.05); /* بطاقة شفافة */
+      padding: 20px 30px;
+      border-radius: 15px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.6);
+      backdrop-filter: blur(10px);
     }
 
     h1 {
-      font-size: 2.2em;
-      margin-bottom: 12px;
-      text-shadow: 0 2px 6px rgba(0,0,0,0.5);
-    }
-    p.desc {
-      font-size: 1.1em;
-      margin-bottom: 25px;
-      opacity: 0.9;
+      margin-bottom: 15px;
     }
 
-    .info {
-      background: rgba(255,255,255,0.08);
-      padding: 20px;
-      border-radius: 16px;
-      max-width: 420px;
-      margin-bottom: 25px;
-      text-align: left;
-      line-height: 1.6;
+    p {
+      margin-bottom: 20px;
     }
-    .info p {margin-bottom: 8px; font-size: 0.95em;}
-    .info strong {display: inline-block; min-width: 120px;}
 
-    .slider-container {
-      max-width: 420px;
-      position: relative;
-      margin: 25px auto;
-      border-radius: 16px;
-      overflow: hidden;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.4);
-    }
-    .slider-container img {
-      width: 100%;
-      display: none;
-    }
-    .slider-container img.active {display: block;}
-
-    .slider-controls {
-      display: flex;
-      justify-content: space-between;
-      margin-top: 10px;
-    }
-    .slider-controls button {
-      padding: 6px 15px;
-      border-radius: 25px;
+    a button {
+      padding: 12px 24px;
       border: none;
-      background: rgba(255,255,255,0.2);
-      color: #fff;
+      border-radius: 25px;
+      background: linear-gradient(90deg, #ff0000, #cc0000); /* ألوان يوتيوب */
+      color: white;
+      font-size: 16px;
       cursor: pointer;
       transition: 0.3s;
     }
-    .slider-controls button:hover {
-      background: rgba(255,255,255,0.4);
-    }
 
-    .long-description {
-      max-width: 420px;
-      background: rgba(255,255,255,0.08);
-      border-radius: 16px;
-      padding: 18px;
-      margin: 20px 0;
-      text-align: left;
-      line-height: 1.6;
-      overflow-y: auto;
-      max-height: 200px;
-    }
-
-    a.download-btn {
-      padding: 14px 40px;
-      font-size: 1.2em;
-      font-weight: bold;
-      background: linear-gradient(135deg, #ff416c, #ff4b2b);
-      color: #fff;
-      text-decoration: none;
-      border-radius: 30px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-      transition: 0.3s;
-    }
-    a.download-btn:hover {transform: scale(1.07);}
-
-    footer {
-      text-align: center;
-      padding: 12px;
-      font-size: 0.85em;
-      background: rgba(0,0,0,0.4);
-      margin-top: auto;
+    a button:hover {
+      transform: scale(1.05);
+      background: linear-gradient(90deg, #cc0000, #ff0000);
     }
   </style>
 </head>
 <body>
-  <header id="appbar">Anesthesia Dose</header>
-
-  <div class="lang-btns">
-    <button class="lang-btn" onclick="setLang('en')">English</button>
-    <button class="lang-btn" onclick="setLang('ar')">عربي</button>
+  <div class="container">
+    <div class="card">
+      <h1>🎥 شاهد تطبيقنا على يوتيوب</h1>
+      <p>لمعرفة المزيد عن مميزات التطبيق وطريقة عمله اضغط الزر أدناه:</p>
+      <a href="https://www.youtube.com/watch?v=XXXXXXX" target="_blank">
+        <button>شاهد على يوتيوب</button>
+      </a>
+    </div>
   </div>
-
-  <main>
-    <div class="logo">
-      <img src="images2/app_icon.png" alt="App Logo">
-    </div>
-
-    <h1 id="title">مرحبا بكم!</h1>
-    <p class="desc" id="desc">اضغط على الزر أدناه لتحميل التطبيق مباشرة على جهازك.</p>
-
-    <div class="info">
-      <p><strong id="label-name">اسم التطبيق:</strong> <span id="info-name">Anesthesia Dose</span></p>
-      <p><strong id="label-version">النسخة:</strong> <span id="info-version">1.0.0</span></p>
-      <p><strong id="label-date">تاريخ التحديث:</strong> <span id="info-date">2025-09-08</span></p>
-      <p><strong id="label-desc">الوصف:</strong> <span id="info-long">هذا التطبيق يتيح لك الوصول إلى جميع ميزاتنا بسهولة وسرعة.</span></p>
-    </div>
-
-    <div class="slider-container">
-      <img src="images2/Screenshot_1.png" class="active" alt="Screenshot 1">
-      <img src="images2/Screenshot_2.png" alt="Screenshot 2">
-      <img src="images2/Screenshot_3.png" alt="Screenshot 3">
-      <div class="slider-controls">
-        <button id="prev-btn" onclick="prevSlide()">←</button>
-        <button id="next-btn" onclick="nextSlide()">→</button>
-      </div>
-    </div>
-
-    <div class="long-description" id="detailed-desc">
-      وصف التطبيق المطول...
-    </div>
-
-    <a id="download" class="download-btn" href="https://your-apk-link" download>تحميل التطبيق</a>
-  </main>
-
-  <footer id="footer">&copy; 2025 MMST</footer>
-
-  <script>
-    const texts = {
-      ar: {
-        appbar: "جرعات التخدير",
-        title: "مرحبا بكم!",
-        desc: "اضغط على الزر أدناه لتحميل التطبيق مباشرة على جهازك.",
-        download: "تحميل التطبيق",
-        footer: "© 2025 MMST",
-        info: {
-          labelName: "اسم التطبيق:", name: "Anesthesia Dose",
-          labelVersion: "النسخة:", version: "1.0.0",
-          labelDate: "تاريخ التحديث:", date: "2025-09-08",
-          labelDesc: "الوصف:", long: "هذا التطبيق يتيح لك الوصول بسهولة وسرعة لكل الميزات."
-        },
-        detailedDesc: "تطبيق جرعات التخدير يساعد الأطباء على حساب الجرعات بدقة...",
-        sliderPrev: "← السابق", sliderNext: "التالي →"
-      },
-      en: {
-        appbar: "Anesthesia Dose",
-        title: "Welcome!",
-        desc: "Click the button below to download the app.",
-        download: "Download App",
-        footer: "© 2025 MMST",
-        info: {
-          labelName: "App Name:", name: "Anesthesia Dose",
-          labelVersion: "Version:", version: "1.0.0",
-          labelDate: "Update Date:", date: "2025-09-08",
-          labelDesc: "Description:", long: "This app allows easy and fast access to all features."
-        },
-        detailedDesc: "An advanced tool for anesthesiologists and ICU staff...",
-        sliderPrev: "← Previous", sliderNext: "Next →"
-      }
-    };
-
-    function setLang(lang) {
-      const t = texts[lang];
-      document.getElementById('appbar').textContent = t.appbar;
-      document.getElementById('title').textContent = t.title;
-      document.getElementById('desc').textContent = t.desc;
-      document.getElementById('download').textContent = t.download;
-      document.getElementById('footer').textContent = t.footer;
-      document.getElementById('label-name').textContent = t.info.labelName;
-      document.getElementById('info-name').textContent = t.info.name;
-      document.getElementById('label-version').textContent = t.info.labelVersion;
-      document.getElementById('info-version').textContent = t.info.version;
-      document.getElementById('label-date').textContent = t.info.labelDate;
-      document.getElementById('info-date').textContent = t.info.date;
-      document.getElementById('label-desc').textContent = t.info.labelDesc;
-      document.getElementById('info-long').textContent = t.info.long;
-      document.getElementById('detailed-desc').textContent = t.detailedDesc;
-      document.getElementById('prev-btn').textContent = t.sliderPrev;
-      document.getElementById('next-btn').textContent = t.sliderNext;
-      document.body.dir = (lang === 'ar') ? 'rtl' : 'ltr';
-    }
-
-    let currentSlide = 0;
-    const slides = document.querySelectorAll('.slider-container img');
-    function showSlide(i) {
-      slides.forEach((s, idx) => s.classList.remove('active'));
-      slides[i].classList.add('active');
-    }
-    function nextSlide() {
-      currentSlide = (currentSlide + 1) % slides.length;
-      showSlide(currentSlide);
-    }
-    function prevSlide() {
-      currentSlide = (currentSlide - 1 + slides.length) % slides.length;
-      showSlide(currentSlide);
-    }
-  </script>
 </body>
 </html>
