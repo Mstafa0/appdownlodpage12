@@ -14,7 +14,7 @@
 
     body {
       font-family: 'Arial', sans-serif;
-      background: linear-gradient(135deg, #4facfe, #00f2fe);
+      background: linear-gradient(135deg, #000000, #1a1a1a, #004aad, #00d4ff);
       color: #fff;
       min-height: 100vh;
       display: flex;
@@ -58,24 +58,6 @@
       align-items: center;
       padding: 20px;
       text-align: center;
-    }
-
-    .logo {
-      width: 120px;
-      height: 120px;
-      border-radius: 24px;
-      background-color: #fff;
-      margin-bottom: 20px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-
-    .logo img {
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-      border-radius: 24px;
     }
 
     h1 {
@@ -132,55 +114,14 @@
       background: rgba(0, 0, 0, 0.3);
     }
 
-    .slider-container {
-      max-width: 400px;
-      position: relative;
-      margin: 30px auto;
-      /* توسيط السلايدر مع مسافة من الأعلى والأسفل */
-      padding: 15px;
-      /* Padding حول السلايدر */
+    .youtube-container {
+      max-width: 560px;
+      width: 100%;
+      height: 315px;
+      margin: 30px 0;
       border-radius: 16px;
       overflow: hidden;
       box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
-      background: rgba(0, 0, 0, 0.2);
-      /* خلفية شفافة للسلايدر */
-    }
-
-    .slider-container img {
-      width: 100%;
-      /* الصورة تمتلئ عرض السلايدر */
-      height: auto;
-      display: none;
-      /* جميع الصور مخفية افتراضياً */
-      border-radius: 50px;
-      padding: 30px;
-      /* Padding صغير داخل الصورة */
-      box-sizing: border-box;
-      /* لضمان أن padding لا يزيد حجم الصورة */
-    }
-
-    .slider-container img.active {
-      display: block;
-    }
-
-    .slider-controls {
-      display: flex;
-      justify-content: space-between;
-      margin-top: 10px;
-    }
-
-    .slider-controls button {
-      padding: 8px 15px;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-      background: rgba(255, 255, 255, 0.2);
-      color: #fff;
-      transition: 0.3s;
-    }
-
-    .slider-controls button:hover {
-      background: rgba(255, 255, 255, 0.4);
     }
 
     .long-description {
@@ -189,18 +130,16 @@
       background: rgba(0, 0, 0, 0.3);
       border-radius: 16px;
       padding: 20px;
-      /* زيادة Padding لتكون القراءة أسهل */
       margin-bottom: 30px;
       text-align: left;
       overflow-y: auto;
-      /* يسمح بالتمرير إذا النص طويل */
     }
   </style>
 </head>
 
 <body>
 
-  <header id="appbar">Anesthesia dose</header>
+  <header id="appbar">Anesthesia Dose</header>
 
   <div class="lang-btns">
     <button class="lang-btn" onclick="setLang('en')">English</button>
@@ -208,19 +147,22 @@
   </div>
 
   <main>
-    <div class="logo">
-      <img src="images2/app_icon.png" alt="App Logo">
-    </div>
 
     <h1 id="title">مرحبا بكم!</h1>
     <p class="desc" id="desc">اضغط على الزر أدناه لتحميل التطبيق مباشرة على جهازك.</p>
 
     <div class="info">
-      <p><strong id="label-name">اسم التطبيق:</strong> <span id="info-name"> Anesthesia dose</span></p>
+      <p><strong id="label-name">اسم التطبيق:</strong> <span id="info-name"> Anesthesia Dose</span></p>
       <p><strong id="label-version">النسخة:</strong> <span id="info-version">1.0.0</span></p>
       <p><strong id="label-date">تاريخ التحديث:</strong> <span id="info-date">2025-09-08</span></p>
       <p><strong id="label-desc">الوصف:</strong> <span id="info-long">هذا التطبيق يتيح لك الوصول إلى جميع ميزاتنا بسهولة
           وسرعة.</span></p>
+    </div>
+
+    <div class="youtube-container">
+      <iframe width="100%" height="100%" src="https://www.youtube.com/embed/VIDEO_ID" title="YouTube video"
+        frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen></iframe>
     </div>
 
     <div class="long-description" id="detailed-desc">
@@ -230,22 +172,6 @@
       تطبيق جرعات التخدير هو أداة متقدمة صممت خصيصًا للأطباء، المقيمين، وممارسي العناية المركزة، لتسهيل حساب جرعات
       التخدير بدقة وسرعة. يوفر التطبيق جداول دقيقة للدواء، تنبيهات للجرعات الحرجة، وخيارات لحساب الجرعات وفق وزن المريض
       وعمره والحالة الصحية.
-
-      مميزات التطبيق:
-
-      حساب جرعات التخدير بشكل تلقائي ودقيق.
-
-      دعم مختلف الأدوية المخدرة المستخدمة في العمليات الجراحية.
-
-      إمكانية حفظ ومراجعة الجرعات السابقة للمريض.
-
-      تنبيهات لحالات الجرعات الحرجة لتجنب الأخطاء الطبية.
-
-      واجهة سهلة الاستخدام مع دعم عربي وإنجليزي.
-
-      إمكانية الوصول السريع لجميع الأدوات المساعدة أثناء العمليات.
-
-      عرض معلومات مفصلة عن كل دواء بما في ذلك المميزات والآثار الجانبية والمحاذير.
     </div>
 
     <a id="download" class="download-btn"
@@ -256,10 +182,9 @@
   <footer id="footer">&copy; 2025 MMST</footer>
 
   <script>
-    // اللغة
     const texts = {
       ar: {
-        appbar: "Anesthesia dose",
+        appbar: "Anesthesia Dose",
         title: "مرحبا بكم!",
         desc: "اضغط على الزر أدناه لتحميل التطبيق مباشرة على جهازك.",
         download: "تحميل التطبيق",
@@ -274,9 +199,7 @@
           labelDesc: "الوصف:",
           long: "هذا التطبيق يتيح لك الوصول إلى جميع ميزاتنا بسهولة وسرعة."
         },
-        detailedDesc: "وصف طويل لتطبيق جرع التخدير: هذا التطبيق يتيح لك حساب جرعات التخدير بشكل دقيق وسريع، مع توفير جداول، تنبيهات، وتفاصيل كل دواء.",
-        sliderPrev: "← السابق",
-        sliderNext: "التالي →"
+        detailedDesc: "وصف طويل لتطبيق جرع التخدير: هذا التطبيق يتيح لك حساب جرعات التخدير بشكل دقيق وسريع، مع توفير جداول، تنبيهات، وتفاصيل كل دواء."
       },
       en: {
         appbar: "Anesthesia Dose",
@@ -294,21 +217,18 @@
           labelDesc: "Description:",
           long: "This app allows you to access all features easily and quickly."
         },
-        detailedDesc: "The Anesthesia Dose Calculator is an advanced tool designed specifically for anesthesiologists, residents, and ICU staff to calculate anesthesia doses quickly and accurately. The app provides precise drug tables, critical dose alerts, and options to calculate doses according to patient weight, age, and medical condition. Features include: automatic dose calculation, support for a wide range of anesthetic medications, ability to save and review previous patient doses, alerts for critical levels to prevent errors, user-friendly interface with Arabic and English support, and detailed information on each drug including features, side effects, and precautions.",
-        sliderPrev: "← Previous",
-        sliderNext: "Next →"
+        detailedDesc: "The Anesthesia Dose Calculator is an advanced tool designed specifically for anesthesiologists, residents, and ICU staff to calculate anesthesia doses quickly and accurately."
       }
     };
 
     function setLang(lang) {
       const t = texts[lang];
-      // AppBar والعناصر الأخرى
       document.getElementById('appbar').textContent = t.appbar;
       document.getElementById('title').textContent = t.title;
       document.getElementById('desc').textContent = t.desc;
       document.getElementById('download').textContent = t.download;
       document.getElementById('footer').innerHTML = t.footer;
-      // صندوق المعلومات
+
       document.getElementById('label-name').textContent = t.info.labelName;
       document.getElementById('info-name').textContent = t.info.name;
       document.getElementById('label-version').textContent = t.info.labelVersion;
@@ -317,32 +237,10 @@
       document.getElementById('info-date').textContent = t.info.date;
       document.getElementById('label-desc').textContent = t.info.labelDesc;
       document.getElementById('info-long').textContent = t.info.long;
-      // الوصف الطويل
+
       document.getElementById('detailed-desc').textContent = t.detailedDesc;
-      // أزرار السلايدر
-      document.getElementById('prev-btn').textContent = t.sliderPrev;
-      document.getElementById('next-btn').textContent = t.sliderNext;
-      // اتجاه الصفحة
+
       document.body.dir = (lang === 'ar') ? 'rtl' : 'ltr';
-    }
-
-    // Slider
-    let currentSlide = 0;
-    const slides = document.querySelectorAll('.slider-container img');
-
-    function showSlide(index) {
-      slides.forEach((s, i) => s.classList.remove('active'));
-      slides[index].classList.add('active');
-    }
-
-    function nextSlide() {
-      currentSlide = (currentSlide + 1) % slides.length;
-      showSlide(currentSlide);
-    }
-
-    function prevSlide() {
-      currentSlide = (currentSlide - 1 + slides.length) % slides.length;
-      showSlide(currentSlide);
     }
   </script>
 
@@ -350,5 +248,3 @@
 
 </html>
 update index.html
-
-
