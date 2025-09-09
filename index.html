@@ -1,10 +1,11 @@
 <!DOCTYPE html>
-<html lang="ar">
+<html lang="en">
 
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>تحميل تطبيق جرع التخدير / Anesthesia Dose App</title>
+  <title>Anesthesia Dose App</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
   <style>
     * {
       margin: 0;
@@ -12,14 +13,23 @@
       box-sizing: border-box;
     }
 
-    body {
+    body,
+    html {
       font-family: 'Arial', sans-serif;
-      background: linear-gradient(135deg, #000000, #1a1a1a, #004aad, #00d4ff);
-      color: #fff;
       min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      transition: background 0.3s;
+      overflow-x: hidden;
+      color: #ffffff;
+      position: relative;
+    }
+
+    /* ===== Canvas Background ===== */
+    #bgCanvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
     }
 
     main {
@@ -27,83 +37,121 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      padding: 20px;
+      padding: 40px 20px;
       text-align: center;
+      position: relative;
+      z-index: 1;
     }
 
     h1 {
-      font-size: 2.5em;
+      font-size: 2.8em;
       margin-bottom: 15px;
-      text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
+      text-shadow: 1px 1px 8px rgba(0, 0, 0, 0.8);
+      opacity: 0;
+      transform: translateY(-40px) scale(0.8);
+      animation: fadeSlideScale 0.8s forwards;
+      animation-delay: 0.2s;
     }
 
     p.desc {
-      font-size: 1.2em;
+      font-size: 1.3em;
       margin-bottom: 30px;
-      text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4);
+      text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.6);
+      opacity: 0;
+      transform: translateY(-40px) scale(0.8);
+      animation: fadeSlideScale 0.8s forwards;
+      animation-delay: 0.4s;
     }
 
-    .info {
-      background: rgba(0, 0, 0, 0.3);
-      padding: 20px 25px;
-      border-radius: 16px;
-      max-width: 400px;
-      margin-bottom: 30px;
-      text-align: left;
+    .card {
+      background: rgba(0, 0, 0, 0.55);
+      border-radius: 20px;
+      padding: 25px;
+      margin-bottom: 25px;
+      width: 100%;
+      max-width: 500px;
+      box-shadow: 0 12px 25px rgba(0, 0, 0, 0.6);
+      transition: transform 0.4s, background 0.4s, box-shadow 0.4s;
+      opacity: 0;
+      transform: translateY(40px) scale(0.85);
+      animation: fadeSlideScale 0.8s forwards;
     }
 
-    .info p {
-      margin-bottom: 10px;
-      font-size: 1em;
+    .card:hover {
+      transform: translateY(-5px) scale(1.02);
+      background: rgba(0, 0, 0, 0.7);
+      box-shadow: 0 16px 35px rgba(0, 0, 0, 0.7), 0 0 15px rgba(0, 255, 255, 0.3);
     }
 
-    .info strong {
-      display: inline-block;
-      width: 120px;
+    .card h2 {
+      margin-bottom: 15px;
+      font-size: 1.6em;
+      color: #00f2fe;
+      text-shadow: 1px 1px 5px #000;
     }
 
-    a.download-btn {
-      padding: 18px 45px;
-      font-size: 1.5em;
-      background: #ff416c;
+    .card p {
+      font-size: 1.05em;
+      line-height: 1.6em;
+      text-align: justify;
+    }
+
+    .download-btn {
+      padding: 18px 50px;
+      font-size: 1.6em;
+      background: linear-gradient(90deg, #ff416c, #ff4b2b);
       color: #fff;
       text-decoration: none;
-      border-radius: 12px;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-      transition: 0.3s;
+      border-radius: 14px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+      transition: 0.4s;
+      display: inline-block;
+      margin-bottom: 30px;
+      opacity: 0;
+      transform: translateY(40px) scale(0.9);
+      animation: fadeSlideScale 0.8s forwards;
+      animation-delay: 1.6s;
     }
 
-    a.download-btn:hover {
-      background: #ff4b2b;
+    .download-btn:hover {
+      transform: scale(1.08);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.7), 0 0 20px rgba(255, 75, 43, 0.5);
+      background-position: 100% 0;
+    }
+
+    .youtube-container {
+      width: 100%;
+      max-width: 560px;
+      height: 315px;
+      margin: 25px 0;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 12px 25px rgba(0, 0, 0, 0.6);
+      opacity: 0;
+      transform: scale(0.8);
+      animation: fadeZoom 0.8s forwards;
+      animation-delay: 1s;
+    }
+
+    /* Long description without card */
+    .long-desc {
+      max-width: 800px;
+      margin: 20px auto 40px;
+      font-size: 1.1rem;
+      line-height: 1.7;
+      text-align: justify;
+      color: #f0f0f0;
+      animation: fadeInUp 1s ease;
     }
 
     footer {
       text-align: center;
       padding: 15px;
-      font-size: 0.9em;
-      opacity: 0.8;
-      background: rgba(0, 0, 0, 0.3);
-    }
-
-    .youtube-container {
-      max-width: 560px;
-      width: 100%;
-      height: 315px;
-      margin: 30px 0;
-      border-radius: 16px;
-      overflow: hidden;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
-    }
-
-    .long-description {
-      height: 200px;
-      max-width: 400px;
-      background: rgba(0, 0, 0, 0.3);
-      border-radius: 16px;
-      padding: 20px;
-      margin-bottom: 30px;
-      text-align: left;
-      overflow-y: auto;
+      font-size: 0.95em;
+      opacity: 0.9;
+      background: rgba(0, 0, 0, 0.35);
+      position: relative;
+      z-index: 1;
     }
 
     /* Drawer */
@@ -121,16 +169,19 @@
     }
 
     .drawer a {
-      padding: 15px 30px;
+      padding: 18px 30px;
       text-decoration: none;
-      font-size: 1.2em;
+      font-size: 1.3em;
       color: #fff;
-      display: block;
+      display: flex;
+      align-items: center;
+      gap: 12px;
       transition: 0.3s;
     }
 
     .drawer a:hover {
       background: rgba(255, 255, 255, 0.1);
+      border-radius: 10px;
     }
 
     .drawer .closebtn {
@@ -161,121 +212,163 @@
 
     .open-drawer-btn:hover {
       background: #ff4b2b;
+      transform: scale(1.1);
     }
 
+    /* Animations */
+    @keyframes fadeSlideScale {
+      to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+
+    @keyframes fadeZoom {
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
   </style>
 </head>
 
 <body>
 
-  <main>
-    <h1 id="title">مرحبا بكم!</h1>
-    <p class="desc" id="desc">اضغط على الزر أدناه لتحميل التطبيق مباشرة على جهازك.</p>
+  <canvas id="bgCanvas"></canvas>
 
-    <div class="info">
-      <p><strong id="label-name">اسم التطبيق:</strong> <span id="info-name"> Anesthesia Dose</span></p>
-      <p><strong id="label-version">النسخة:</strong> <span id="info-version">1.0.0</span></p>
-      <p><strong id="label-date">تاريخ التحديث:</strong> <span id="info-date">2025-09-08</span></p>
-      <p><strong id="label-desc">الوصف:</strong> <span id="info-long">هذا التطبيق يتيح لك الوصول إلى جميع ميزاتنا بسهولة وسرعة.</span></p>
+  <main>
+    <h1>Welcome!</h1>
+    <p class="desc">Click the button below to download the app directly to your device.</p>
+
+    <div class="card" style="animation-delay:0.6s;">
+      <h2>App Information</h2>
+      <p><strong>App Name:</strong> <span>Anesthesia Dose</span></p>
+      <p><strong>Version:</strong> <span>1.0.0</span></p>
+      <p><strong>Update Date:</strong> <span>2025-09-08</span></p>
+      <p><strong>Description:</strong> <span>This app allows you to access all features easily and quickly.</span></p>
     </div>
 
+    <!-- YouTube Video -->
     <div class="youtube-container">
       <iframe width="100%" height="100%" src="https://www.youtube.com/embed/VIDEO_ID" title="YouTube video"
         frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
         allowfullscreen></iframe>
     </div>
 
-    <div class="long-description" id="detailed-desc">
-      وصف طويل لتطبيق جرع التخدير بالعربية...
-    </div>
+    <!-- Long description without card -->
+    <section class="long-desc">
+      <p>
+        The Anesthesia Dose App is designed to simplify and optimize the work of anesthesiologists, residents, and ICU staff.  
+        It provides accurate drug dosage calculations, infusion rates, and fluid management tools. The app also integrates ABG interpretation, scoring systems, and quick access to vital references.  
+        With its clean interface and real-time guidance, the app ensures safety, efficiency, and precision in daily clinical practice.
+      </p>
+    </section>
 
-    <a id="download" class="download-btn"
+    <a class="download-btn"
       href="https://www.dropbox.com/scl/fi/2h75ofg1uyxjzdvac6dny/Anes.does.apk?rlkey=r2a8pbv2l42a8dzajao4sn8ry&st=ug1i8k0w&dl=1"
-      download>تحميل التطبيق</a>
+      download>Download App</a>
   </main>
 
   <!-- Drawer -->
   <div id="myDrawer" class="drawer">
     <span class="closebtn" onclick="closeDrawer()">&times;</span>
-    <a href="#" onclick="setLang('ar'); closeDrawer()">العربية</a>
-    <a href="#" onclick="setLang('en'); closeDrawer()">English</a>
-    <a href="#" onclick="alert('خيار إضافي 1'); closeDrawer()">خيار إضافي 1</a>
-    <a href="#" onclick="alert('خيار إضافي 2'); closeDrawer()">خيار إضافي 2</a>
+    <a href="https://t.me/YOUR_TELEGRAM_CHANNEL" target="_blank">
+      <i class="fa-brands fa-telegram"></i> Telegram Channel
+    </a>
+    <a href="mailto:youremail@gmail.com">
+      <i class="fa-solid fa-envelope"></i> Contact Us
+    </a>
   </div>
 
-  <!-- Floating Button -->
+  <!-- Floating Drawer Button -->
   <button class="open-drawer-btn" onclick="openDrawer()">☰</button>
 
-  <footer id="footer">&copy; 2025 MMST</footer>
+  <footer>&copy; 2025 MMST</footer>
 
   <script>
     function openDrawer() {
-      document.getElementById("myDrawer").style.width = "250px";
+      document.getElementById("myDrawer").style.width = "280px";
     }
 
     function closeDrawer() {
       document.getElementById("myDrawer").style.width = "0";
     }
 
-    const texts = {
-      ar: {
-        title: "مرحبا بكم!",
-        desc: "اضغط على الزر لتحميل التطبيق.",
-        download: "تحميل التطبيق",
-        footer: "&copy; 2025 MMST",
-        info: {
-          labelName: "اسم التطبيق:",
-          name: "Anesthesia Dose",
-          labelVersion: "النسخة:",
-          version: "1.0.0",
-          labelDate: "تاريخ التحديث:",
-          date: "2025-09-08",
-          labelDesc: "الوصف:",
-          long: "هذا التطبيق يتيح لك الوصول إلى جميع ميزاتنا بسهولة وسرعة."
-        },
-        detailedDesc: "وصف طويل لتطبيق جرع التخدير بالعربية..."
-      },
-      en: {
-        title: "Welcome!",
-        desc: "Click the button below to download the app.",
-        download: "Download App",
-        footer: "&copy; 2025 MMST",
-        info: {
-          labelName: "App Name:",
-          name: "Anesthesia Dose",
-          labelVersion: "Version:",
-          version: "1.0.0",
-          labelDate: "Update Date:",
-          date: "2025-09-08",
-          labelDesc: "Description:",
-          long: "This app allows you to access all features easily and quickly."
-        },
-        detailedDesc: "Long description of the Anesthesia Dose app in English..."
+    // ===== Background particles with gradient =====
+    const canvas = document.getElementById("bgCanvas");
+    const ctx = canvas.getContext("2d");
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    const particlesArray = [];
+    const colors = ["#00d4ff", "#004aad", "#0a1f44", "#00ffea"];
+
+    class Particle {
+      constructor() {
+        this.x = Math.random() * canvas.width;
+        this.y = Math.random() * canvas.height;
+        this.size = Math.random() * 3 + 1;
+        this.speedX = Math.random() * 1 - 0.5;
+        this.speedY = Math.random() * 1 - 0.5;
+        this.color = colors[Math.floor(Math.random() * colors.length)];
       }
-    };
-
-    function setLang(lang) {
-      const t = texts[lang];
-      document.getElementById('title').textContent = t.title;
-      document.getElementById('desc').textContent = t.desc;
-      document.getElementById('download').textContent = t.download;
-      document.getElementById('footer').innerHTML = t.footer;
-
-      document.getElementById('label-name').textContent = t.info.labelName;
-      document.getElementById('info-name').textContent = t.info.name;
-      document.getElementById('label-version').textContent = t.info.labelVersion;
-      document.getElementById('info-version').textContent = t.info.version;
-      document.getElementById('label-date').textContent = t.info.labelDate;
-      document.getElementById('info-date').textContent = t.info.date;
-      document.getElementById('label-desc').textContent = t.info.labelDesc;
-      document.getElementById('info-long').textContent = t.info.long;
-
-      document.getElementById('detailed-desc').textContent = t.detailedDesc;
-
-      document.body.dir = (lang === 'ar') ? 'rtl' : 'ltr';
+      update() {
+        this.x += this.speedX;
+        this.y += this.speedY;
+        if (this.x < 0 || this.x > canvas.width) this.speedX = -this.speedX;
+        if (this.y < 0 || this.y > canvas.height) this.speedY = -this.speedY;
+      }
+      draw() {
+        ctx.fillStyle = this.color;
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+        ctx.fill();
+      }
     }
-  </script>
 
+    function initParticles() {
+      for (let i = 0; i < 120; i++) {
+        particlesArray.push(new Particle());
+      }
+    }
+
+    function animateParticles() {
+      // Gradient background
+      const gradient = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
+      gradient.addColorStop(0, "#000000"); // black
+      gradient.addColorStop(0.5, "#004aad"); // blue
+      gradient.addColorStop(1, "#00d4ff"); // cyan
+      ctx.fillStyle = gradient;
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+      particlesArray.forEach(p => {
+        p.update();
+        p.draw();
+      });
+      requestAnimationFrame(animateParticles);
+    }
+
+    window.addEventListener("resize", () => {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    });
+
+    initParticles();
+    animateParticles();
+  </script>
 </body>
+
 </html>
 update index.html
