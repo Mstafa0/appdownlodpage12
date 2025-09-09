@@ -21,15 +21,6 @@
       flex-direction: column;
     }
 
-    header {
-      background: rgba(0, 0, 0, 0.6);
-      padding: 15px 30px;
-      text-align: center;
-      font-size: 1.7em;
-      font-weight: bold;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
-    }
-
     .lang-btns {
       margin: 15px 0;
       text-align: center;
@@ -139,15 +130,12 @@
 
 <body>
 
-  <header id="appbar">Anesthesia Dose</header>
-
   <div class="lang-btns">
     <button class="lang-btn" onclick="setLang('en')">English</button>
     <button class="lang-btn" onclick="setLang('ar')">عربي</button>
   </div>
 
   <main>
-
     <h1 id="title">مرحبا بكم!</h1>
     <p class="desc" id="desc">اضغط على الزر أدناه لتحميل التطبيق مباشرة على جهازك.</p>
 
@@ -184,7 +172,6 @@
   <script>
     const texts = {
       ar: {
-        appbar: "Anesthesia Dose",
         title: "مرحبا بكم!",
         desc: "اضغط على الزر أدناه لتحميل التطبيق مباشرة على جهازك.",
         download: "تحميل التطبيق",
@@ -199,10 +186,9 @@
           labelDesc: "الوصف:",
           long: "هذا التطبيق يتيح لك الوصول إلى جميع ميزاتنا بسهولة وسرعة."
         },
-        detailedDesc: "وصف طويل لتطبيق جرع التخدير: هذا التطبيق يتيح لك حساب جرعات التخدير بشكل دقيق وسريع، مع توفير جداول، تنبيهات، وتفاصيل كل دواء."
+        detailedDesc: "وصف طويل لتطبيق جرع التخدير: هذا التطبيق يتيح لك حساب جرعات التخدير بشكل دقيق وسريع."
       },
       en: {
-        appbar: "Anesthesia Dose",
         title: "Welcome!",
         desc: "Click the button below to download the app directly to your device.",
         download: "Download App",
@@ -217,13 +203,12 @@
           labelDesc: "Description:",
           long: "This app allows you to access all features easily and quickly."
         },
-        detailedDesc: "The Anesthesia Dose Calculator is an advanced tool designed specifically for anesthesiologists, residents, and ICU staff to calculate anesthesia doses quickly and accurately."
+        detailedDesc: "The Anesthesia Dose Calculator is an advanced tool designed specifically for anesthesiologists, residents, and ICU staff."
       }
     };
 
     function setLang(lang) {
       const t = texts[lang];
-      document.getElementById('appbar').textContent = t.appbar;
       document.getElementById('title').textContent = t.title;
       document.getElementById('desc').textContent = t.desc;
       document.getElementById('download').textContent = t.download;
@@ -248,3 +233,4 @@
 
 </html>
 update index.html
+
