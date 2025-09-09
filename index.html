@@ -1,54 +1,80 @@
 <!DOCTYPE html>
 <html lang="ar">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>تحميل تطبيق جرع التخدير / Anesthesia Dose App</title>
+  <title>Anesthesia Dose App</title>
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+    * {margin: 0; padding: 0; box-sizing: border-box;}
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  background: linear-gradient(rgba(0, 0, 0, 0.9), rgba(20, 20, 20, 0.9)), 
+              url("images2/background.jpg") no-repeat center center fixed;
+  background-size: cover;
+  color: white;
+}
+    .container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  text-align: center;
+}
+    .card {
+  background: rgba(255, 255, 255, 0.05); /* شفاف */
+  padding: 20px 30px;
+  border-radius: 15px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.6);
+  backdrop-filter: blur(10px);
+}
+    button {
+  padding: 12px 24px;
+  margin-top: 20px;
+  border: none;
+  border-radius: 25px;
+  background: linear-gradient(90deg, #00c6ff, #0072ff);
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.3s;
+}
 
-    body {
-      font-family: 'Arial', sans-serif;
-      background: linear-gradient(135deg, #4facfe, #00f2fe);
-      color: #fff;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-    }
+    button:hover {
+  transform: scale(1.05);
+  background: linear-gradient(90deg, #0072ff, #00c6ff);
+}
 
     header {
-      background: rgba(0, 0, 0, 0.6);
-      padding: 15px 30px;
+      background: rgba(0, 0, 0, 0.5);
+      padding: 15px 25px;
       text-align: center;
-      font-size: 1.7em;
+      font-size: 1.8em;
       font-weight: bold;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+      letter-spacing: 1px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
     }
 
     .lang-btns {
       margin: 15px 0;
       text-align: center;
     }
-
     .lang-btn {
-      margin: 0 10px;
+      margin: 0 8px;
       padding: 8px 20px;
-      font-size: 1em;
-      border-radius: 8px;
+      border-radius: 25px;
       border: none;
       cursor: pointer;
-      background: rgba(255, 255, 255, 0.2);
+      background: rgba(255, 255, 255, 0.15);
       color: #fff;
-      transition: 0.3s;
+      font-size: 0.95em;
+      transition: all 0.3s ease;
     }
-
     .lang-btn:hover {
-      background: rgba(255, 255, 255, 0.4);
+      background: rgba(255, 255, 255, 0.35);
+      transform: scale(1.05);
     }
 
     main {
@@ -61,146 +87,108 @@
     }
 
     .logo {
-      width: 120px;
-      height: 120px;
-      border-radius: 24px;
-      background-color: #fff;
+      width: 130px;
+      height: 130px;
       margin-bottom: 20px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
     }
-
     .logo img {
-      width: 100%;
-      height: 100%;
+      width: 100%; height: 100%;
       object-fit: contain;
-      border-radius: 24px;
+      border-radius: 20px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.4);
     }
 
     h1 {
-      font-size: 2.5em;
-      margin-bottom: 15px;
-      text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
+      font-size: 2.2em;
+      margin-bottom: 12px;
+      text-shadow: 0 2px 6px rgba(0,0,0,0.5);
     }
-
     p.desc {
-      font-size: 1.2em;
-      margin-bottom: 30px;
-      text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4);
+      font-size: 1.1em;
+      margin-bottom: 25px;
+      opacity: 0.9;
     }
 
     .info {
-      background: rgba(0, 0, 0, 0.3);
-      padding: 20px 25px;
+      background: rgba(255,255,255,0.08);
+      padding: 20px;
       border-radius: 16px;
-      max-width: 400px;
-      margin-bottom: 30px;
+      max-width: 420px;
+      margin-bottom: 25px;
       text-align: left;
+      line-height: 1.6;
     }
-
-    .info p {
-      margin-bottom: 10px;
-      font-size: 1em;
-    }
-
-    .info strong {
-      display: inline-block;
-      width: 120px;
-    }
-
-    a.download-btn {
-      padding: 18px 45px;
-      font-size: 1.5em;
-      background: #ff416c;
-      color: #fff;
-      text-decoration: none;
-      border-radius: 12px;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-      transition: 0.3s;
-    }
-
-    a.download-btn:hover {
-      background: #ff4b2b;
-    }
-
-    footer {
-      text-align: center;
-      padding: 15px;
-      font-size: 0.9em;
-      opacity: 0.8;
-      background: rgba(0, 0, 0, 0.3);
-    }
+    .info p {margin-bottom: 8px; font-size: 0.95em;}
+    .info strong {display: inline-block; min-width: 120px;}
 
     .slider-container {
-      max-width: 400px;
+      max-width: 420px;
       position: relative;
-      margin: 30px auto;
-      /* توسيط السلايدر مع مسافة من الأعلى والأسفل */
-      padding: 15px;
-      /* Padding حول السلايدر */
+      margin: 25px auto;
       border-radius: 16px;
       overflow: hidden;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
-      background: rgba(0, 0, 0, 0.2);
-      /* خلفية شفافة للسلايدر */
+      box-shadow: 0 4px 15px rgba(0,0,0,0.4);
     }
-
     .slider-container img {
       width: 100%;
-      /* الصورة تمتلئ عرض السلايدر */
-      height: auto;
       display: none;
-      /* جميع الصور مخفية افتراضياً */
-      border-radius: 50px;
-      padding: 30px;
-      /* Padding صغير داخل الصورة */
-      box-sizing: border-box;
-      /* لضمان أن padding لا يزيد حجم الصورة */
     }
-
-    .slider-container img.active {
-      display: block;
-    }
+    .slider-container img.active {display: block;}
 
     .slider-controls {
       display: flex;
       justify-content: space-between;
       margin-top: 10px;
     }
-
     .slider-controls button {
-      padding: 8px 15px;
+      padding: 6px 15px;
+      border-radius: 25px;
       border: none;
-      border-radius: 8px;
-      cursor: pointer;
-      background: rgba(255, 255, 255, 0.2);
+      background: rgba(255,255,255,0.2);
       color: #fff;
+      cursor: pointer;
       transition: 0.3s;
     }
-
     .slider-controls button:hover {
-      background: rgba(255, 255, 255, 0.4);
+      background: rgba(255,255,255,0.4);
     }
 
     .long-description {
-      height: 200px;
-      max-width: 400px;
-      background: rgba(0, 0, 0, 0.3);
+      max-width: 420px;
+      background: rgba(255,255,255,0.08);
       border-radius: 16px;
-      padding: 20px;
-      /* زيادة Padding لتكون القراءة أسهل */
-      margin-bottom: 30px;
+      padding: 18px;
+      margin: 20px 0;
       text-align: left;
+      line-height: 1.6;
       overflow-y: auto;
-      /* يسمح بالتمرير إذا النص طويل */
+      max-height: 200px;
+    }
+
+    a.download-btn {
+      padding: 14px 40px;
+      font-size: 1.2em;
+      font-weight: bold;
+      background: linear-gradient(135deg, #ff416c, #ff4b2b);
+      color: #fff;
+      text-decoration: none;
+      border-radius: 30px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      transition: 0.3s;
+    }
+    a.download-btn:hover {transform: scale(1.07);}
+
+    footer {
+      text-align: center;
+      padding: 12px;
+      font-size: 0.85em;
+      background: rgba(0,0,0,0.4);
+      margin-top: auto;
     }
   </style>
 </head>
-
 <body>
-
-  <header id="appbar">Anesthesia dose</header>
+  <header id="appbar">Anesthesia Dose</header>
 
   <div class="lang-btns">
     <button class="lang-btn" onclick="setLang('en')">English</button>
@@ -216,117 +204,72 @@
     <p class="desc" id="desc">اضغط على الزر أدناه لتحميل التطبيق مباشرة على جهازك.</p>
 
     <div class="info">
-      <p><strong id="label-name">اسم التطبيق:</strong> <span id="info-name"> Anesthesia dose</span></p>
+      <p><strong id="label-name">اسم التطبيق:</strong> <span id="info-name">Anesthesia Dose</span></p>
       <p><strong id="label-version">النسخة:</strong> <span id="info-version">1.0.0</span></p>
       <p><strong id="label-date">تاريخ التحديث:</strong> <span id="info-date">2025-09-08</span></p>
-      <p><strong id="label-desc">الوصف:</strong> <span id="info-long">هذا التطبيق يتيح لك الوصول إلى جميع ميزاتنا بسهولة
-          وسرعة.</span></p>
+      <p><strong id="label-desc">الوصف:</strong> <span id="info-long">هذا التطبيق يتيح لك الوصول إلى جميع ميزاتنا بسهولة وسرعة.</span></p>
     </div>
 
     <div class="slider-container">
-
       <img src="images2/Screenshot_1.png" class="active" alt="Screenshot 1">
       <img src="images2/Screenshot_2.png" alt="Screenshot 2">
       <img src="images2/Screenshot_3.png" alt="Screenshot 3">
-      <img src="images2/Screenshot_4.png" alt="Screenshot 4">
-      <img src="images2/Screenshot_5.png" alt="Screenshot 5">
-      <img src="images2/Screenshot_6.png" alt="Screenshot 6">
-      <img src="images2/Screenshot_7.png" alt="Screenshot 7">
-
-
-
       <div class="slider-controls">
-        <button id="prev-btn" onclick="prevSlide()">← السابق</button>
-        <button id="next-btn" onclick="nextSlide()">التالي →</button>
+        <button id="prev-btn" onclick="prevSlide()">←</button>
+        <button id="next-btn" onclick="nextSlide()">→</button>
       </div>
     </div>
 
     <div class="long-description" id="detailed-desc">
-      الوصف بالعربية:
-
-      وصف التطبيق المطول:
-      تطبيق جرعات التخدير هو أداة متقدمة صممت خصيصًا للأطباء، المقيمين، وممارسي العناية المركزة، لتسهيل حساب جرعات
-      التخدير بدقة وسرعة. يوفر التطبيق جداول دقيقة للدواء، تنبيهات للجرعات الحرجة، وخيارات لحساب الجرعات وفق وزن المريض
-      وعمره والحالة الصحية.
-
-      مميزات التطبيق:
-
-      حساب جرعات التخدير بشكل تلقائي ودقيق.
-
-      دعم مختلف الأدوية المخدرة المستخدمة في العمليات الجراحية.
-
-      إمكانية حفظ ومراجعة الجرعات السابقة للمريض.
-
-      تنبيهات لحالات الجرعات الحرجة لتجنب الأخطاء الطبية.
-
-      واجهة سهلة الاستخدام مع دعم عربي وإنجليزي.
-
-      إمكانية الوصول السريع لجميع الأدوات المساعدة أثناء العمليات.
-
-      عرض معلومات مفصلة عن كل دواء بما في ذلك المميزات والآثار الجانبية والمحاذير.
+      وصف التطبيق المطول...
     </div>
 
-    <a id="download" class="download-btn"
-      href="https://www.dropbox.com/scl/fi/2h75ofg1uyxjzdvac6dny/Anes.does.apk?rlkey=r2a8pbv2l42a8dzajao4sn8ry&st=ug1i8k0w&dl=1"
-      download>تحميل التطبيق</a>
+    <a id="download" class="download-btn" href="https://your-apk-link" download>تحميل التطبيق</a>
   </main>
 
   <footer id="footer">&copy; 2025 MMST</footer>
 
   <script>
-    // اللغة
     const texts = {
       ar: {
-        appbar: "Anesthesia dose",
+        appbar: "جرعات التخدير",
         title: "مرحبا بكم!",
         desc: "اضغط على الزر أدناه لتحميل التطبيق مباشرة على جهازك.",
         download: "تحميل التطبيق",
-        footer: "&copy; 2025 MMST ",
+        footer: "© 2025 MMST",
         info: {
-          labelName: "اسم التطبيق:",
-          name: "Anesthesia Dose",
-          labelVersion: "النسخة:",
-          version: "1.0.0",
-          labelDate: "تاريخ التحديث:",
-          date: "2025-09-08",
-          labelDesc: "الوصف:",
-          long: "هذا التطبيق يتيح لك الوصول إلى جميع ميزاتنا بسهولة وسرعة."
+          labelName: "اسم التطبيق:", name: "Anesthesia Dose",
+          labelVersion: "النسخة:", version: "1.0.0",
+          labelDate: "تاريخ التحديث:", date: "2025-09-08",
+          labelDesc: "الوصف:", long: "هذا التطبيق يتيح لك الوصول بسهولة وسرعة لكل الميزات."
         },
-        detailedDesc: "وصف طويل لتطبيق جرع التخدير: هذا التطبيق يتيح لك حساب جرعات التخدير بشكل دقيق وسريع، مع توفير جداول، تنبيهات، وتفاصيل كل دواء.",
-        sliderPrev: "← السابق",
-        sliderNext: "التالي →"
+        detailedDesc: "تطبيق جرعات التخدير يساعد الأطباء على حساب الجرعات بدقة...",
+        sliderPrev: "← السابق", sliderNext: "التالي →"
       },
       en: {
         appbar: "Anesthesia Dose",
         title: "Welcome!",
-        desc: "Click the button below to download the app directly to your device.",
+        desc: "Click the button below to download the app.",
         download: "Download App",
-        footer: "&copy; 2025 MMST",
+        footer: "© 2025 MMST",
         info: {
-          labelName: "App Name:",
-          name: "Anesthesia Dose",
-          labelVersion: "Version:",
-          version: "1.0.0",
-          labelDate: "Update Date:",
-          date: "2025-09-08",
-          labelDesc: "Description:",
-          long: "This app allows you to access all features easily and quickly."
+          labelName: "App Name:", name: "Anesthesia Dose",
+          labelVersion: "Version:", version: "1.0.0",
+          labelDate: "Update Date:", date: "2025-09-08",
+          labelDesc: "Description:", long: "This app allows easy and fast access to all features."
         },
-        detailedDesc: "The Anesthesia Dose Calculator is an advanced tool designed specifically for anesthesiologists, residents, and ICU staff to calculate anesthesia doses quickly and accurately. The app provides precise drug tables, critical dose alerts, and options to calculate doses according to patient weight, age, and medical condition. Features include: automatic dose calculation, support for a wide range of anesthetic medications, ability to save and review previous patient doses, alerts for critical levels to prevent errors, user-friendly interface with Arabic and English support, and detailed information on each drug including features, side effects, and precautions.",
-        sliderPrev: "← Previous",
-        sliderNext: "Next →"
+        detailedDesc: "An advanced tool for anesthesiologists and ICU staff...",
+        sliderPrev: "← Previous", sliderNext: "Next →"
       }
     };
 
     function setLang(lang) {
       const t = texts[lang];
-      // AppBar والعناصر الأخرى
       document.getElementById('appbar').textContent = t.appbar;
       document.getElementById('title').textContent = t.title;
       document.getElementById('desc').textContent = t.desc;
       document.getElementById('download').textContent = t.download;
-      document.getElementById('footer').innerHTML = t.footer;
-      // صندوق المعلومات
+      document.getElementById('footer').textContent = t.footer;
       document.getElementById('label-name').textContent = t.info.labelName;
       document.getElementById('info-name').textContent = t.info.name;
       document.getElementById('label-version').textContent = t.info.labelVersion;
@@ -335,36 +278,26 @@
       document.getElementById('info-date').textContent = t.info.date;
       document.getElementById('label-desc').textContent = t.info.labelDesc;
       document.getElementById('info-long').textContent = t.info.long;
-      // الوصف الطويل
       document.getElementById('detailed-desc').textContent = t.detailedDesc;
-      // أزرار السلايدر
       document.getElementById('prev-btn').textContent = t.sliderPrev;
       document.getElementById('next-btn').textContent = t.sliderNext;
-      // اتجاه الصفحة
       document.body.dir = (lang === 'ar') ? 'rtl' : 'ltr';
     }
 
-    // Slider
     let currentSlide = 0;
     const slides = document.querySelectorAll('.slider-container img');
-
-    function showSlide(index) {
-      slides.forEach((s, i) => s.classList.remove('active'));
-      slides[index].classList.add('active');
+    function showSlide(i) {
+      slides.forEach((s, idx) => s.classList.remove('active'));
+      slides[i].classList.add('active');
     }
-
     function nextSlide() {
       currentSlide = (currentSlide + 1) % slides.length;
       showSlide(currentSlide);
     }
-
     function prevSlide() {
       currentSlide = (currentSlide - 1 + slides.length) % slides.length;
       showSlide(currentSlide);
     }
   </script>
-
 </body>
-
-
 </html>
