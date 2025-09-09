@@ -19,27 +19,7 @@
       min-height: 100vh;
       display: flex;
       flex-direction: column;
-    }
-
-    .lang-btns {
-      margin: 15px 0;
-      text-align: center;
-    }
-
-    .lang-btn {
-      margin: 0 10px;
-      padding: 8px 20px;
-      font-size: 1em;
-      border-radius: 8px;
-      border: none;
-      cursor: pointer;
-      background: rgba(255, 255, 255, 0.2);
-      color: #fff;
-      transition: 0.3s;
-    }
-
-    .lang-btn:hover {
-      background: rgba(255, 255, 255, 0.4);
+      transition: background 0.3s;
     }
 
     main {
@@ -125,15 +105,68 @@
       text-align: left;
       overflow-y: auto;
     }
+
+    /* Drawer */
+    .drawer {
+      height: 100%;
+      width: 0;
+      position: fixed;
+      top: 0;
+      left: 0;
+      background-color: rgba(0, 0, 0, 0.95);
+      overflow-x: hidden;
+      transition: 0.3s;
+      padding-top: 60px;
+      z-index: 1000;
+    }
+
+    .drawer a {
+      padding: 15px 30px;
+      text-decoration: none;
+      font-size: 1.2em;
+      color: #fff;
+      display: block;
+      transition: 0.3s;
+    }
+
+    .drawer a:hover {
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    .drawer .closebtn {
+      position: absolute;
+      top: 15px;
+      right: 25px;
+      font-size: 2em;
+      cursor: pointer;
+      color: #fff;
+    }
+
+    .open-drawer-btn {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: #ff416c;
+      color: #fff;
+      border: none;
+      border-radius: 50%;
+      width: 60px;
+      height: 60px;
+      font-size: 1.8em;
+      cursor: pointer;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+      z-index: 1001;
+      transition: 0.3s;
+    }
+
+    .open-drawer-btn:hover {
+      background: #ff4b2b;
+    }
+
   </style>
 </head>
 
 <body>
-
-  <div class="lang-btns">
-    <button class="lang-btn" onclick="setLang('en')">English</button>
-    <button class="lang-btn" onclick="setLang('ar')">عربي</button>
-  </div>
 
   <main>
     <h1 id="title">مرحبا بكم!</h1>
@@ -143,8 +176,7 @@
       <p><strong id="label-name">اسم التطبيق:</strong> <span id="info-name"> Anesthesia Dose</span></p>
       <p><strong id="label-version">النسخة:</strong> <span id="info-version">1.0.0</span></p>
       <p><strong id="label-date">تاريخ التحديث:</strong> <span id="info-date">2025-09-08</span></p>
-      <p><strong id="label-desc">الوصف:</strong> <span id="info-long">هذا التطبيق يتيح لك الوصول إلى جميع ميزاتنا بسهولة
-          وسرعة.</span></p>
+      <p><strong id="label-desc">الوصف:</strong> <span id="info-long">هذا التطبيق يتيح لك الوصول إلى جميع ميزاتنا بسهولة وسرعة.</span></p>
     </div>
 
     <div class="youtube-container">
@@ -154,12 +186,7 @@
     </div>
 
     <div class="long-description" id="detailed-desc">
-      الوصف بالعربية:
-
-      وصف التطبيق المطول:
-      تطبيق جرعات التخدير هو أداة متقدمة صممت خصيصًا للأطباء، المقيمين، وممارسي العناية المركزة، لتسهيل حساب جرعات
-      التخدير بدقة وسرعة. يوفر التطبيق جداول دقيقة للدواء، تنبيهات للجرعات الحرجة، وخيارات لحساب الجرعات وفق وزن المريض
-      وعمره والحالة الصحية.
+      وصف طويل لتطبيق جرع التخدير بالعربية...
     </div>
 
     <a id="download" class="download-btn"
@@ -167,15 +194,35 @@
       download>تحميل التطبيق</a>
   </main>
 
+  <!-- Drawer -->
+  <div id="myDrawer" class="drawer">
+    <span class="closebtn" onclick="closeDrawer()">&times;</span>
+    <a href="#" onclick="setLang('ar'); closeDrawer()">العربية</a>
+    <a href="#" onclick="setLang('en'); closeDrawer()">English</a>
+    <a href="#" onclick="alert('خيار إضافي 1'); closeDrawer()">خيار إضافي 1</a>
+    <a href="#" onclick="alert('خيار إضافي 2'); closeDrawer()">خيار إضافي 2</a>
+  </div>
+
+  <!-- Floating Button -->
+  <button class="open-drawer-btn" onclick="openDrawer()">☰</button>
+
   <footer id="footer">&copy; 2025 MMST</footer>
 
   <script>
+    function openDrawer() {
+      document.getElementById("myDrawer").style.width = "250px";
+    }
+
+    function closeDrawer() {
+      document.getElementById("myDrawer").style.width = "0";
+    }
+
     const texts = {
       ar: {
         title: "مرحبا بكم!",
-        desc: "اضغط على الزر أدناه لتحميل التطبيق مباشرة على جهازك.",
+        desc: "اضغط على الزر لتحميل التطبيق.",
         download: "تحميل التطبيق",
-        footer: "&copy; 2025 MMST ",
+        footer: "&copy; 2025 MMST",
         info: {
           labelName: "اسم التطبيق:",
           name: "Anesthesia Dose",
@@ -186,11 +233,11 @@
           labelDesc: "الوصف:",
           long: "هذا التطبيق يتيح لك الوصول إلى جميع ميزاتنا بسهولة وسرعة."
         },
-        detailedDesc: "وصف طويل لتطبيق جرع التخدير: هذا التطبيق يتيح لك حساب جرعات التخدير بشكل دقيق وسريع."
+        detailedDesc: "وصف طويل لتطبيق جرع التخدير بالعربية..."
       },
       en: {
         title: "Welcome!",
-        desc: "Click the button below to download the app directly to your device.",
+        desc: "Click the button below to download the app.",
         download: "Download App",
         footer: "&copy; 2025 MMST",
         info: {
@@ -203,7 +250,7 @@
           labelDesc: "Description:",
           long: "This app allows you to access all features easily and quickly."
         },
-        detailedDesc: "The Anesthesia Dose Calculator is an advanced tool designed specifically for anesthesiologists, residents, and ICU staff."
+        detailedDesc: "Long description of the Anesthesia Dose app in English..."
       }
     };
 
