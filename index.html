@@ -46,7 +46,7 @@
     h1 {
       font-size: 2.8em;
       margin-bottom: 15px;
-      text-shadow: 1px 1px 8px rgba(0, 0, 0, 0.8);
+      text-shadow: 1px 1px 8px rgba(167, 0, 0, 0.8);
       opacity: 0;
       transform: translateY(-40px) scale(0.8);
       animation: fadeSlideScale 0.8s forwards;
@@ -54,7 +54,7 @@
     }
 
     p.desc {
-      font-size: 1.3em;
+      font-size: 1.01em;
       margin-bottom: 30px;
       text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.6);
       opacity: 0;
@@ -64,7 +64,7 @@
     }
 
     .card {
-      background: rgba(0, 0, 0, 0.55);
+      background: rgba(5, 114, 116, 0);
       border-radius: 20px;
       padding: 25px;
       margin-bottom: 25px;
@@ -85,15 +85,15 @@
 
     .card h2 {
       margin-bottom: 15px;
-      font-size: 1.6em;
+      font-size: 1.0em;
       color: #00f2fe;
       text-shadow: 1px 1px 5px #000;
     }
 
     .card p {
-      font-size: 1.05em;
+      font-size: 1.0em;
       line-height: 1.6em;
-      text-align: justify;
+      text-align: start;
     }
 
     .download-btn {
@@ -137,10 +137,12 @@
     .long-desc {
       max-width: 800px;
       margin: 20px auto 40px;
-      font-size: 1.1rem;
-      line-height: 1.7;
-      text-align: justify;
-      color: #f0f0f0;
+      font-size: 0.5rem;
+      /* صغرت الخط من 1.1rem الى 0.9rem */
+      line-height: 1.6;
+      /* تقدر تقلل او تزيد المسافة بين السطور */
+      text-align: start;
+      color: #ffffff;
       animation: fadeInUp 1s ease;
     }
 
@@ -254,7 +256,7 @@
 
     <div class="card" style="animation-delay:0.6s;">
       <h2>App Information</h2>
-      <p><strong>App Name:</strong> <span>Anesthesia Dose</span></p>
+      <p><strong>App Name:</strong> <span>Anes.Dose</span></p>
       <p><strong>Version:</strong> <span>1.0.0</span></p>
       <p><strong>Update Date:</strong> <span>2025-09-08</span></p>
       <p><strong>Description:</strong> <span>This app allows you to access all features easily and quickly.</span></p>
@@ -262,7 +264,7 @@
 
     <!-- YouTube Video -->
     <div class="youtube-container">
-      <iframe width="100%" height="100%" src="https://www.youtube.com/embed/VIDEO_ID" title="YouTube video"
+      <iframe width="100%" height="100%" src="https://youtu.be/8_bYxjN7JWU?si=211mkpQoPlswscpm" title="YouTube video"
         frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
         allowfullscreen></iframe>
     </div>
@@ -270,9 +272,37 @@
     <!-- Long description without card -->
     <section class="long-desc">
       <p>
-        The Anesthesia Dose App is designed to simplify and optimize the work of anesthesiologists, residents, and ICU staff.  
-        It provides accurate drug dosage calculations, infusion rates, and fluid management tools. The app also integrates ABG interpretation, scoring systems, and quick access to vital references.  
-        With its clean interface and real-time guidance, the app ensures safety, efficiency, and precision in daily clinical practice.
+        The Anesthesia Dose App is a comprehensive medical tool designed specifically for anesthesiologists, anesthesia
+        residents, and ICU professionals. It combines precision, reliability, and ease of use to support critical
+        decision-making during perioperative and intensive care management.
+      </p>
+
+      With this app, clinicians gain quick access to essential anesthesia tools, ensuring both patient safety and
+      workflow efficiency.
+      </p>
+
+      Key Features:
+      </p>
+
+      Anesthesia Dose Calculator – Quickly calculate accurate anesthetic drug dosages based on patient-specific
+      parameters.
+      Fluid Management Calculator – Simplify intraoperative and perioperative fluid therapy with smart, guided
+      calculations.
+
+     ABG Interpreter – Automatic analysis of arterial blood gases (pH, PaCO₂, HCO₃⁻) with detailed compensation
+      status and anion gap calculation.
+      🌬 Ventilator Settings Guide – Provides optimized ventilator parameters tailored to patient conditions,
+      improving respiratory management.
+      Clinical Scoring Systems – Integrated tools including Glasgow Coma Scale (GCS), RASS Score, and Aldrete Score
+      for monitoring patient status.
+       Drug Reference Library – A detailed database of anesthetic drugs including classification, side effects,
+      advantages, and precautions.
+       Educational Mode – A built-in learning section with guidelines, disease diagnostic support, and interactive
+      case scenarios to strengthen clinical decision-making.
+      </p>
+
+      Whether you are managing patients in the operating room, ICU, or emergency settings, the Anesthesia Dose App is
+      your reliable companion, offering real-time support and medical insights in one intuitive platform.
       </p>
     </section>
 
@@ -284,10 +314,10 @@
   <!-- Drawer -->
   <div id="myDrawer" class="drawer">
     <span class="closebtn" onclick="closeDrawer()">&times;</span>
-    <a href="https://t.me/YOUR_TELEGRAM_CHANNEL" target="_blank">
+    <a href="https://t.me/Anesthesia_doses_app" target="_blank">
       <i class="fa-brands fa-telegram"></i> Telegram Channel
     </a>
-    <a href="mailto:youremail@gmail.com">
+    <a href="mailto:mustafairaqi0760@gmail.com">
       <i class="fa-solid fa-envelope"></i> Contact Us
     </a>
   </div>
@@ -371,4 +401,3 @@
 </body>
 
 </html>
-update index.html
